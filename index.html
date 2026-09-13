@@ -170,7 +170,7 @@ body.edit-mode .toolbar{display:flex}
   padding:18px;
 }
 .memory-slot input{display:none}
-body:not(.edit-mode) .memory-slot:not(.has-photo){display:none}
+body:not(.edit-mode) .memory-slot:not(.has-photo){display:flex;opacity:.38;pointer-events:none}
 
 .cake-section{text-align:center}
 .cake-wrap{display:flex;justify-content:center;margin:36px 0 24px}
@@ -294,6 +294,61 @@ body:not(.edit-mode) .memory-slot:not(.has-photo){display:none}
   </section>
 
   <section class="chapter reveal">
+    <div class="eyebrow">More evidence</div>
+    <h2 class="title">More of my favorite views.</h2>
+    <p class="copy" style="margin-bottom:18px">Four more spaces for the photos that deserve their own page.</p>
+    <div class="memory-grid">
+      <label class="memory-slot" id="slot5">
+        <img id="p5" alt="Photo 5">
+        <span>Add photo 5</span>
+        <input type="file" accept="image/*" onchange="replacePhoto(event,'p5','photo5')">
+      </label>
+      <label class="memory-slot" id="slot6">
+        <img id="p6" alt="Photo 6">
+        <span>Add photo 6</span>
+        <input type="file" accept="image/*" onchange="replacePhoto(event,'p6','photo6')">
+      </label>
+      <label class="memory-slot" id="slot7">
+        <img id="p7" alt="Photo 7">
+        <span>Add photo 7</span>
+        <input type="file" accept="image/*" onchange="replacePhoto(event,'p7','photo7')">
+      </label>
+      <label class="memory-slot" id="slot8">
+        <img id="p8" alt="Photo 8">
+        <span>Add photo 8</span>
+        <input type="file" accept="image/*" onchange="replacePhoto(event,'p8','photo8')">
+      </label>
+    </div>
+  </section>
+
+  <section class="chapter reveal cake-section">
+    <div class="eyebrow">Birthday protocol</div>
+    <h2 class="title">Make a wish, Twin.</h2>
+    <p class="copy" style="margin:0 auto 20px">Tap the button, allow microphone access, then blow toward the phone to put out the candles.</p>
+
+    <div class="cake-wrap">
+      <div class="cake" aria-label="Batman themed birthday cake">
+        <div class="cake-top"></div>
+        <div class="cake-logo">🦇</div>
+        <div class="cake-text">TWIN</div>
+        <div class="candles">
+          <div class="candle"><i class="flame"></i></div>
+          <div class="candle"><i class="flame"></i></div>
+          <div class="candle"><i class="flame"></i></div>
+          <div class="candle"><i class="flame"></i></div>
+          <div class="candle"><i class="flame"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="blow-panel">
+      <button class="open-btn" id="micBtn" onclick="startBlowDetection()">🎙️ Blow out the candles</button>
+      <div id="micStatus" class="mic-status">Microphone is off.</div>
+    </div>
+  </section>
+
+
+  <section class="chapter reveal">
     <div class="letter reveal">
       <div class="eyebrow">Private message · for Twin only</div>
       <h2>Dear Twin,</h2>
@@ -341,6 +396,10 @@ body:not(.edit-mode) .memory-slot:not(.has-photo){display:none}
       <label class="file-btn">Replace photo 2<input type="file" accept="image/*" onchange="replacePhoto(event,'p2','photo2')"></label>
       <label class="file-btn">Replace photo 3<input type="file" accept="image/*" onchange="replacePhoto(event,'p3','photo3')"></label>
       <label class="file-btn">Replace photo 4<input type="file" accept="image/*" onchange="replacePhoto(event,'p4','photo4')"></label>
+      <label class="file-btn">Add/replace photo 5<input type="file" accept="image/*" onchange="replacePhoto(event,'p5','photo5')"></label>
+      <label class="file-btn">Add/replace photo 6<input type="file" accept="image/*" onchange="replacePhoto(event,'p6','photo6')"></label>
+      <label class="file-btn">Add/replace photo 7<input type="file" accept="image/*" onchange="replacePhoto(event,'p7','photo7')"></label>
+      <label class="file-btn">Add/replace photo 8<input type="file" accept="image/*" onchange="replacePhoto(event,'p8','photo8')"></label>
     </div>
     <div class="field">
       <label>Opening caption</label>
