@@ -173,78 +173,180 @@ body.edit-mode .toolbar{display:flex}
 body:not(.edit-mode) .memory-slot:not(.has-photo){display:flex;opacity:.38;pointer-events:none}
 
 .cake-section{text-align:center}
-.cake-wrap{display:flex;justify-content:center;margin:36px 0 24px}
+
+.cake-wrap{
+  display:flex;
+  justify-content:center;
+  margin:54px 0 28px;
+  padding-top:42px;
+}
 .cake{
   position:relative;
   width:min(86vw,360px);
-  height:220px;
-  border-radius:24px 24px 34px 34px;
-  background:linear-gradient(180deg,#16171b 0%,#0a0b0d 58%,#050506 100%);
+  height:230px;
+  border-radius:30px 30px 38px 38px;
+  background:
+    linear-gradient(180deg,#1b1c21 0%,#121318 45%,#08090b 100%);
   border:1px solid rgba(255,255,255,.12);
-  box-shadow:0 28px 70px rgba(0,0,0,.55), inset 0 -16px 24px rgba(0,0,0,.35);
+  box-shadow:
+    0 28px 70px rgba(0,0,0,.58),
+    inset 0 1px 0 rgba(255,255,255,.07),
+    inset 0 -20px 30px rgba(0,0,0,.35);
 }
-.cake::before{
+.cake::after{
   content:"";
   position:absolute;
-  left:18px;right:18px;top:42px;height:7px;
-  border-radius:999px;
-  background:linear-gradient(90deg,#b28c43,#efd58d,#b28c43);
-  box-shadow:0 64px 0 rgba(178,140,67,.5);
+  left:18px;right:18px;bottom:-16px;height:26px;
+  border-radius:50%;
+  background:rgba(0,0,0,.4);
+  filter:blur(8px);
+  z-index:-1;
 }
 .cake-top{
-  position:absolute;left:0;right:0;top:-18px;height:54px;
+  position:absolute;
+  left:-1px;right:-1px;top:-28px;height:70px;
   border-radius:50%;
-  background:radial-gradient(ellipse at center,#24262d 0%,#121318 70%,#0a0b0d 100%);
+  background:
+    radial-gradient(ellipse at 50% 36%,#30323a 0%,#202127 38%,#111217 72%,#090a0d 100%);
   border:1px solid rgba(255,255,255,.12);
+  box-shadow:inset 0 6px 14px rgba(255,255,255,.04), inset 0 -12px 24px rgba(0,0,0,.45);
 }
-.cake-logo{position:absolute;top:66px;left:0;right:0;font-size:44px}
+.cake-icing{
+  position:absolute;
+  left:0;right:0;top:22px;height:34px;
+  background:
+    radial-gradient(circle at 6% 0,#1e1f24 0 16px,transparent 17px),
+    radial-gradient(circle at 18% 0,#1e1f24 0 20px,transparent 21px),
+    radial-gradient(circle at 33% 0,#1e1f24 0 15px,transparent 16px),
+    radial-gradient(circle at 49% 0,#1e1f24 0 22px,transparent 23px),
+    radial-gradient(circle at 66% 0,#1e1f24 0 16px,transparent 17px),
+    radial-gradient(circle at 82% 0,#1e1f24 0 20px,transparent 21px),
+    radial-gradient(circle at 96% 0,#1e1f24 0 15px,transparent 16px);
+  opacity:.98;
+}
+.cake-band{
+  position:absolute;
+  left:20px;right:20px;top:78px;height:3px;
+  border-radius:99px;
+  background:linear-gradient(90deg,#7f5b1d,#e5c46d,#7f5b1d);
+  box-shadow:0 72px 0 rgba(212,177,106,.42);
+}
+.cake-logo{
+  position:absolute;
+  top:98px;
+  left:50%;
+  transform:translateX(-50%);
+  width:88px;height:44px;
+}
+.cake-logo::before,
+.cake-logo::after{
+  content:"";
+  position:absolute;
+  background:#d4b16a;
+}
+.cake-logo::before{
+  left:18px;right:18px;top:12px;height:20px;
+  clip-path:polygon(0 50%,18% 32%,30% 0,43% 32%,50% 18%,57% 32%,70% 0,82% 32%,100% 50%,76% 58%,64% 100%,50% 72%,36% 100%,24% 58%);
+}
 .cake-text{
-  position:absolute;left:0;right:0;bottom:35px;
-  font-family:Georgia,serif;font-size:28px;letter-spacing:.22em;color:#e5d3a6;
+  position:absolute;left:0;right:0;bottom:34px;
+  font-family:Georgia,serif;
+  font-size:27px;
+  letter-spacing:.2em;
+  color:#ead9a8;
+  text-shadow:0 0 18px rgba(212,177,106,.15);
 }
 .candles{
   position:absolute;
-  left:50%;top:-48px;
+  left:50%;
+  top:-66px;
   transform:translateX(-50%);
-  display:flex;gap:18px;z-index:4;
+  display:flex;
+  gap:24px;
+  align-items:flex-end;
+  z-index:6;
 }
 .candle{
-  position:relative;width:8px;height:40px;border-radius:3px;
-  background:repeating-linear-gradient(45deg,#d4b16a 0 5px,#1a1a1e 5px 10px);
-  box-shadow:0 4px 12px rgba(0,0,0,.4);
+  position:relative;
+  width:8px;
+  height:42px;
+  border-radius:3px 3px 2px 2px;
+  background:repeating-linear-gradient(
+    -45deg,
+    #d4b16a 0 6px,
+    #191a1f 6px 12px
+  );
+  box-shadow:0 4px 12px rgba(0,0,0,.45);
 }
 .flame{
-  position:absolute;left:50%;top:-22px;
-  width:14px;height:22px;transform:translateX(-50%) rotate(45deg);
+  position:absolute;
+  left:50%;
+  top:-23px;
+  width:14px;height:22px;
+  transform:translateX(-50%) rotate(45deg);
   border-radius:70% 30% 70% 30%;
-  background:radial-gradient(circle at 65% 65%,#fff6b1 0 18%,#ffb000 40%,#ff5a00 68%,rgba(255,90,0,.2) 100%);
-  box-shadow:0 0 16px rgba(255,166,0,.9),0 0 30px rgba(255,80,0,.45);
+  background:radial-gradient(circle at 65% 65%,#fff8b8 0 18%,#ffc21f 42%,#ff6a00 70%,rgba(255,90,0,.12) 100%);
+  box-shadow:0 0 14px rgba(255,177,0,.95),0 0 28px rgba(255,84,0,.42);
   animation:flicker .16s infinite alternate ease-in-out;
   transform-origin:center bottom;
 }
 .candle.out .flame{
   opacity:0;
-  transform:translateX(-50%) translateY(4px) scale(.25);
+  transform:translateX(-50%) translateY(5px) scale(.2);
   transition:.35s ease;
   animation:none;
 }
 @keyframes flicker{
-  from{transform:translateX(-50%) rotate(42deg) scale(.95)}
+  from{transform:translateX(-50%) rotate(42deg) scale(.94)}
   to{transform:translateX(-50%) rotate(48deg) scale(1.08)}
 }
 .blow-panel{display:flex;flex-direction:column;align-items:center;gap:10px}
 .mic-status{font-size:13px;color:#8e8e93;min-height:20px}
 .mic-status.good{color:#d4b16a}
 .mic-status.done{color:#f6f3ee;font-family:Georgia,serif;font-size:18px}
+
 @media(max-width:560px){
   .memory-grid{grid-template-columns:1fr 1fr}
   .memory-slot,.memory-slot img{min-height:190px}
   .candles{gap:14px}
 }
 
+
+@media(max-width:560px){
+  .cake-wrap{margin-top:64px;padding-top:34px}
+  .candles{gap:17px;top:-62px}
+  .candle{height:39px}
+}
+
+
+#confettiCanvas{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:9999;
+}
+.music-toggle{
+  position:fixed;
+  left:14px;
+  bottom:14px;
+  z-index:121;
+  border:1px solid rgba(255,255,255,.26);
+  background:rgba(15,15,18,.76);
+  backdrop-filter:blur(12px);
+  color:#fff;
+  border-radius:999px;
+  padding:10px 14px;
+  font-size:13px;
+  cursor:pointer;
+}
+
 </style>
 </head>
 <body>
+<canvas id="confettiCanvas" aria-hidden="true"></canvas>
+
 
 <section class="page hero" id="top">
   <div class="hero-bg"></div>
@@ -329,7 +431,9 @@ body:not(.edit-mode) .memory-slot:not(.has-photo){display:flex;opacity:.38;point
     <div class="cake-wrap">
       <div class="cake" aria-label="Batman themed birthday cake">
         <div class="cake-top"></div>
-        <div class="cake-logo">🦇</div>
+        <div class="cake-icing"></div>
+        <div class="cake-band"></div>
+        <div class="cake-logo"></div>
         <div class="cake-text">TWIN</div>
         <div class="candles">
           <div class="candle"><i class="flame"></i></div>
@@ -382,6 +486,8 @@ body:not(.edit-mode) .memory-slot:not(.has-photo){display:flex;opacity:.38;point
 
 </div>
 </main>
+
+<button class="music-toggle" id="musicBtn" onclick="toggleMusic()">♪ Music</button>
 
 <div class="toolbar">
   <button class="small-btn" onclick="openEditor()">✎ Edit photos & words</button>
@@ -559,6 +665,7 @@ function extinguishCandles(){
   setTimeout(()=>{
     const status=document.getElementById("micStatus");
     status.textContent="Wish made. Happy Birthday, Twin. 🖤";
+    launchConfetti();
     status.className="mic-status done";
     document.getElementById("micBtn").textContent="Candles blown out ♡";
     document.getElementById("micBtn").disabled=true;
@@ -568,6 +675,98 @@ function stopMic(){
   if(micAnim) cancelAnimationFrame(micAnim);
   if(micStream) micStream.getTracks().forEach(t=>t.stop());
   if(audioCtx) audioCtx.close();
+}
+
+
+function launchConfetti(){
+  const canvas=document.getElementById("confettiCanvas");
+  const ctx=canvas.getContext("2d");
+  const dpr=Math.max(1,window.devicePixelRatio||1);
+  const resize=()=>{
+    canvas.width=innerWidth*dpr;
+    canvas.height=innerHeight*dpr;
+    canvas.style.width=innerWidth+"px";
+    canvas.style.height=innerHeight+"px";
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  };
+  resize();
+  const palette=["#d4b16a","#f6f3ee","#8e111d","#9c8b6f","#2b2c31"];
+  const pieces=Array.from({length:140},()=>({
+    x:innerWidth/2+(Math.random()-.5)*120,
+    y:innerHeight*.42,
+    vx:(Math.random()-.5)*9,
+    vy:-6-Math.random()*8,
+    g:.18+Math.random()*.08,
+    r:3+Math.random()*5,
+    rot:Math.random()*Math.PI,
+    vr:(Math.random()-.5)*.35,
+    c:palette[Math.floor(Math.random()*palette.length)],
+    life:120+Math.random()*50
+  }));
+  let frame=0;
+  function draw(){
+    ctx.clearRect(0,0,innerWidth,innerHeight);
+    pieces.forEach(p=>{
+      if(p.life<=0)return;
+      p.x+=p.vx; p.y+=p.vy; p.vy+=p.g; p.rot+=p.vr; p.life--;
+      ctx.save();
+      ctx.translate(p.x,p.y);
+      ctx.rotate(p.rot);
+      ctx.fillStyle=p.c;
+      ctx.fillRect(-p.r,-p.r/2,p.r*2,p.r);
+      ctx.restore();
+    });
+    frame++;
+    if(frame<190) requestAnimationFrame(draw);
+    else ctx.clearRect(0,0,innerWidth,innerHeight);
+  }
+  draw();
+}
+
+
+let musicCtx=null, musicMaster=null, musicTimer=null, musicPlaying=false, musicStep=0;
+function startMusic(){
+  if(musicPlaying)return;
+  musicCtx=new (window.AudioContext||window.webkitAudioContext)();
+  musicMaster=musicCtx.createGain();
+  musicMaster.gain.value=.055;
+  musicMaster.connect(musicCtx.destination);
+  musicPlaying=true;
+  document.getElementById("musicBtn").textContent="♫ Music on";
+
+  const scale=[220.00,261.63,329.63,392.00,329.63,261.63,246.94,196.00];
+  const bass=[110.00,98.00,130.81,87.31];
+  function note(freq,dur,vol=.5,type="sine",when=0){
+    const o=musicCtx.createOscillator();
+    const g=musicCtx.createGain();
+    o.type=type; o.frequency.value=freq;
+    g.gain.setValueAtTime(0,musicCtx.currentTime+when);
+    g.gain.linearRampToValueAtTime(vol,musicCtx.currentTime+when+.03);
+    g.gain.exponentialRampToValueAtTime(.001,musicCtx.currentTime+when+dur);
+    o.connect(g); g.connect(musicMaster);
+    o.start(musicCtx.currentTime+when);
+    o.stop(musicCtx.currentTime+when+dur+.05);
+  }
+  function tick(){
+    if(!musicPlaying)return;
+    const i=musicStep%scale.length;
+    note(scale[i],.65,.55,"triangle");
+    if(musicStep%2===0) note(scale[(i+2)%scale.length]/2,.9,.22,"sine",.06);
+    if(musicStep%4===0) note(bass[(musicStep/4)%bass.length|0],1.3,.18,"sine");
+    musicStep++;
+  }
+  tick();
+  musicTimer=setInterval(tick,720);
+}
+function stopMusic(){
+  musicPlaying=false;
+  clearInterval(musicTimer);
+  if(musicCtx) musicCtx.close();
+  musicCtx=null;
+  document.getElementById("musicBtn").textContent="♪ Music";
+}
+function toggleMusic(){
+  if(musicPlaying) stopMusic(); else startMusic();
 }
 
 </script>
