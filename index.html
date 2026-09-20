@@ -524,6 +524,9 @@ body:not(.edit-mode) .memory-slot:not(.has-photo){display:flex;opacity:.38;point
       <textarea id="editLetter" rows="10"></textarea>
     </div>
     <button class="open-btn" onclick="saveText()" style="width:100%;margin-top:4px">Save changes</button>
+    <button class="open-btn" onclick="exportEdits()" style="width:100%;margin-top:10px;border-color:#d4b16a;color:#e8cd91">⬇ Export my saved edits</button>
+    <div class="note" style="margin-top:8px">Downloads a JSON backup of your saved text and any photos you replaced. Upload this file to our chat to make the changes permanent for Twin. It contains your personal photos and letter, so keep it private.</div>
+    <div class="note" id="exportStatus" aria-live="polite"></div>
     <button class="small-btn" onclick="resetAll()" style="width:100%;margin-top:10px">Reset to original</button>
     <button class="small-btn" onclick="closeEditor()" style="width:100%;margin-top:10px">Done</button>
   </div>
@@ -568,6 +571,35 @@ function saveText(){
  localStorage.setItem("quote1",document.getElementById("editQuote").value);
  localStorage.setItem("letter",document.getElementById("editLetter").value);
  load(); closeEditor();
+}
+function exportEdits(){
+  // Include anything the user has typed into the open editor, even if they
+  // have not separately pressed Save changes yet.
+  const editorOpen=document.getElementById("editor").classList.contains("show");
+  const keys=["caption1","quote1","letter","photo1","photo2","photo3","photo4","photo5","photo6","photo7","photo8"];
+  const edits={};
+  keys.forEach(key=>{
+    const value=localStorage.getItem(key);
+    if(value!==null) edits[key]=value;
+  });
+  if(editorOpen){
+    edits.caption1=document.getElementById("editCaption").value;
+    edits.quote1=document.getElementById("editQuote").value;
+    edits.letter=document.getElementById("editLetter").value;
+  }
+  const payload={format:"twin-birthday-edits",version:1,exportedAt:new Date().toISOString(),edits};
+  const blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;
+  a.download="Twin_Birthday_Edits.json";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),60000);
+  const count=Object.keys(edits).filter(k=>k.startsWith("photo")).length;
+  const msg=document.getElementById("exportStatus");
+  if(msg) msg.textContent="Export requested: "+count+" saved photo(s) and your text. Check your browser downloads/Files.";
 }
 function replacePhoto(e,id,key){
  const f=e.target.files[0]; if(!f)return;
